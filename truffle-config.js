@@ -1,4 +1,12 @@
+require('dotenv').config();
 const path = require("path");
+
+const HDWalletProvider = require('@truffle/hdwallet-provider');
+const infuraKey = process.env.INFURA_KEY;
+//
+const fs = require('fs');
+const mnemonic = fs.readFileSync(".secret").toString().trim();
+console.log({ infuraKey, mnemonic });
 
 module.exports = {
   // See <http://truffleframework.com/docs/advanced/configuration>
@@ -7,7 +15,15 @@ module.exports = {
   networks: {
     develop: {
       port: 8545
-    }
+    },
+    // Useful for deploying to a public network.
+    // NB: It's important to wrap the provider as a function.
+    rinkeby: {
+      provider: new HDWalletProvider(mnemonic, `https://rinkeby.infura.io/v3/${infuraKey}`),
+      network_id: 4,       // rinkeby's id
+      gas: 4500000,        // rinkeby has a lower block limit than mainnet
+      gasPrice: 10000000000
+    },
   },
   // Configure your compilers
   compilers: {
