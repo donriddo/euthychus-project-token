@@ -129,6 +129,11 @@ class Home extends Component {
     this.setState({ totalSupply, walletBalance });
   };
 
+  logout = () => {
+    localStorage.removeItem('user');
+    window.location = '/';
+  }
+
   render() {
     // const user = localStorage.getItem('user');
 
@@ -150,6 +155,10 @@ class Home extends Component {
           <div>
             Wallet Balance: EPT {this.state.walletBalance}
           </div>
+
+          <button onClick={this.logout.bind(this)} className="logout-button">
+            Logout
+          </button>
         </div>
       );
   }
