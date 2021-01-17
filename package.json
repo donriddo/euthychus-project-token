@@ -1,0 +1,15 @@
+{
+  "name": "euthychus-project-token",
+  "version": "1.0.0",
+  "description": "ERC20 Token",
+  "main": "index.js",
+  "repository": "https://github.com/donriddo/euthychus-project-token",
+  "author": "Ridwan Taiwo <donriddo@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "@openzeppelin/contracts": "^3.3.0",
+    "@truffle/hdwallet-provider": "^1.2.1",
+    "dotenv": "^8.2.0"
+  }
+}
